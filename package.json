@@ -1,0 +1,23 @@
+{
+  "name": "xy-pool",
+  "version": "0.1.0",
+  "description": "An events system for JavaScript",
+  "keywords": [
+    "event",
+    "eventjs",
+    "events",
+    "eventsjs",
+    "xy-events"
+  ],
+  "main": "./index.js",
+  "repository": "git@github.com:wang12124468/events.git",
+  "author": "xiaoyong <454926339@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --config webpack.config.js"
+  },
+  "devDependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  }
+}
