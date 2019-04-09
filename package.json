@@ -1,5 +1,5 @@
 {
-  "name": "xy-pool",
+  "name": "xy-events",
   "version": "0.1.0",
   "description": "An events system for JavaScript",
   "keywords": [
