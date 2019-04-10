@@ -9,7 +9,7 @@ function generateConfig(name) {
             path: path.resolve(__dirname, './dist/'),
             filename: name + '.js',
             sourceMapFilename: name + '.js.map',
-            library: 'pool',
+            library: 'events',
             libraryTarget: 'umd'
         },
         node: {
@@ -22,6 +22,6 @@ function generateConfig(name) {
     return config;
 }
 
-config = [generateConfig('pool'), generateConfig('pool.min')];
+config = [generateConfig('events'), generateConfig('events.min')];
 
 module.exports = config;
