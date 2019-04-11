@@ -9,7 +9,7 @@ function generateConfig(name) {
             path: path.resolve(__dirname, './dist/'),
             filename: name + '.js',
             sourceMapFilename: name + '.js.map',
-            library: 'events',
+            library: 'Events',
             libraryTarget: 'umd'
         },
         node: {
