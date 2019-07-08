@@ -1,6 +1,6 @@
 {
   "name": "xy-events",
-  "version": "0.2.1",
+  "version": "0.1.5",
   "description": "An events system for JavaScript",
   "keywords": [
     "event",
