@@ -6,19 +6,17 @@ export interface Lisenter<T> {
     (event: T & XYEvent): void;
 }
 
-export interface EventsInstance {
+declare class Events {
+    constructor();
+
     addEventListener<T>(type: string, lisenter: Lisenter<T>): void;
     on<T>(type: string, lisenter: Lisenter<T>): void;
     removeEventListener<T>(type: string, lisenter: Lisenter<T>): void;
     off<T>(type: string, lisenter: Lisenter<T>): void;
+
     dispatchEvent<T>(event: T & XYEvent): boolean;
+    dispatchEvent<T>(type: string, ...args): boolean;
 }
-
-export interface XYEvents {
-    new (): EventsInstance;
-}
-
-declare const Events: XYEvents;
 
 export { Events };
 export default Events;
