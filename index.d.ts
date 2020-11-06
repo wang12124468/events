@@ -16,6 +16,8 @@ declare class Events {
 
     dispatchEvent<T>(event: T & XYEvent): boolean;
     dispatchEvent<T>(type: string, ...args): boolean;
+
+    removeAllEventListener(): void;
 }
 
 export { Events };

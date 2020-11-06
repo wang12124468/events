@@ -72,3 +72,16 @@ test('9. Events: Dispatch event with object, which has type, and other arguments
     expect(mockCallback.mock.calls.length).toBe(1);
     expect(mockCallback.mock.calls[0]).toEqual([{ type: 'test', msg: 'msg' }, 1, true]);
 });
+
+test('10. Events: Remove all event listener', function() {
+    var events = new Events();
+    var mockCallback = jest.fn();
+    var mockCallback2 = jest.fn();
+    events.addEventListener('test', mockCallback);
+    events.addEventListener('test2', mockCallback);
+    events.removeAllEventListener();
+    events.dispatchEvent({ type: 'test', msg: 'msg' }, 1, true);
+    events.dispatchEvent({ type: 'test2' });
+    expect(mockCallback).toBeCalledTimes(0);
+    expect(mockCallback2).toBeCalledTimes(0);
+});
