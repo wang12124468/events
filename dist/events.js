@@ -117,6 +117,7 @@ module.exports = __webpack_require__(/*! ./lib/events */ "./lib/events.js");
 var addEventListener = __webpack_require__(/*! ./addEventListener */ "./lib/core/addEventListener.js");
 var removeEventListener = __webpack_require__(/*! ./removeEventListener */ "./lib/core/removeEventListener.js");
 var dispatchEvent = __webpack_require__(/*! ./dispatchEvent */ "./lib/core/dispatchEvent.js");
+var removeAllEventListener = __webpack_require__(/*! ./removeAllEventListener */ "./lib/core/removeAllEventListener.js");
 
 function Events() {
     this._listeners = {};
@@ -138,8 +139,12 @@ Events.prototype.off = function(type, listener) {
     return removeEventListener.call(this, type, listener);
 }
 
-Events.prototype.dispatchEvent = function() {
+Events.prototype.dispatchEvent = function(type) {
     return dispatchEvent.apply(this, arguments);
+}
+
+Events.prototype.removeAllEventListener = function() {
+    return removeAllEventListener.call(this);
 }
 
 module.exports = Events;
@@ -203,6 +208,9 @@ function dispatchEvent(arg1) {
         return true;
     }
 
+    // Copy the listeners
+    stack = stack.slice();
+
     for(var i = 0, l = stack.length; i < l; i++) {
         ReflectApply(stack[i], this, args);
     }
@@ -210,6 +218,21 @@ function dispatchEvent(arg1) {
 }
 
 module.exports = dispatchEvent;
+
+/***/ }),
+
+/***/ "./lib/core/removeAllEventListener.js":
+/*!********************************************!*\
+  !*** ./lib/core/removeAllEventListener.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function removeAllEventListener() {
+    this._listeners = {};
+}
+
+module.exports = removeAllEventListener;
 
 /***/ }),
 
@@ -261,7 +284,7 @@ module.exports = removeEventListener;
 var Events = __webpack_require__(/*! ./core/Events */ "./lib/core/Events.js");
 
 module.exports = Events;
-module.exports.default = Events;
+module.exports.Events = Events;
 
 
 
