@@ -1,1 +1,4 @@
-module.exports = require('./lib/events');
+import { Events } from './src/events';
+
+export { Events }
+export default { Events }

@@ -1,5 +1,3 @@
-function removeAllEventListener() {
+export function removeAllEventListener() {
     this._listeners = {};
 }
-
-module.exports = removeAllEventListener;

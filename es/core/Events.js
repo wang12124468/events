@@ -1,39 +1,50 @@
 "use strict";
 
-var addEventListener = require('./addEventListener');
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Events = Events;
 
-var removeEventListener = require('./removeEventListener');
+var _addEventListener = require("./addEventListener");
 
-var dispatchEvent = require('./dispatchEvent');
+var _dispatchEvent = require("./dispatchEvent");
 
-var removeAllEventListener = require('./removeAllEventListener');
+var _removeAllEventListener = require("./removeAllEventListener");
+
+var _removeEventListener = require("./removeEventListener");
 
 function Events() {
   this._listeners = {};
 }
 
-Events.prototype.addEventListener = function (type, listener) {
-  return addEventListener.call(this, type, listener);
+Events.prototype.addEventListener = function (type, listener, options) {
+  return _addEventListener.addEventListener.call(this, type, listener, options);
 };
 
-Events.prototype.on = function (type, listener) {
-  return addEventListener.call(this, type, listener);
+Events.prototype.on = function (type, listener, options) {
+  return _addEventListener.addEventListener.call(this, type, listener, options);
 };
 
-Events.prototype.removeEventListener = function (type, listener) {
-  return removeEventListener.call(this, type, listener);
+Events.prototype.removeEventListener = function (type, listener, options) {
+  return _removeEventListener.removeEventListener.call(this, type, listener, options);
 };
 
-Events.prototype.off = function (type, listener) {
-  return removeEventListener.call(this, type, listener);
+Events.prototype.off = function (type, listener, options) {
+  return _removeEventListener.removeEventListener.call(this, type, listener, options);
 };
 
 Events.prototype.dispatchEvent = function (type) {
-  return dispatchEvent.apply(this, arguments);
+  return _dispatchEvent.dispatchEvent.apply(this, arguments);
+};
+
+Events.prototype.asyncDispatchEvent = function (type) {
+  return _dispatchEvent.asyncDispatchEvent.apply(this, arguments);
+};
+
+Events.prototype.syncDispatchEvent = function (type) {
+  return _dispatchEvent.syncDispatchEvent.apply(this, arguments);
 };
 
 Events.prototype.removeAllEventListener = function () {
-  return removeAllEventListener.call(this);
+  return _removeAllEventListener.removeAllEventListener.call(this);
 };
-
-module.exports = Events;

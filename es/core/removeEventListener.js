@@ -1,6 +1,9 @@
 "use strict";
 
-var ReflectHas = require('../utils/utils').ReflectHas;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.removeEventListener = removeEventListener;
 
 function removeEventListener(type, listener) {
   // Validate
@@ -12,18 +15,9 @@ function removeEventListener(type, listener) {
 
   var listeners = this._listeners;
 
-  if (!ReflectHas(listeners, type)) {
+  if (!Reflect.has(listeners, type)) {
     return;
   }
 
-  var stack = listeners[type];
-
-  for (var i = 0, l = stack.length; i < l; i++) {
-    if (stack[i] === listener) {
-      stack.splice(i, 1);
-      return;
-    }
-  }
+  listeners[type] = listeners[type].filter(ss => ss.listener !== listener);
 }
-
-module.exports = removeEventListener;

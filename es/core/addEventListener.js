@@ -1,8 +1,11 @@
 "use strict";
 
-var ReflectHas = require('../utils/utils').ReflectHas;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addEventListener = addEventListener;
 
-function addEventListener(type, listener) {
+function addEventListener(type, listener, options) {
   // Validate
   var listenerType = typeof listener;
 
@@ -12,11 +15,16 @@ function addEventListener(type, listener) {
 
   var listeners = this._listeners;
 
-  if (!ReflectHas(listeners, type)) {
+  if (!Reflect.has(listeners, type)) {
     listeners[type] = [];
   }
 
-  listeners[type].push(listener);
+  var {
+    mode = 'sync'
+  } = options || {};
+  var ss = {
+    mode,
+    listener
+  };
+  listeners[type].push(ss);
 }
-
-module.exports = addEventListener;

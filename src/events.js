@@ -1,5 +1,2 @@
-var Events = require('./core/Events');
-
-module.exports = Events;
-module.exports.Events = Events;
+export { Events } from './core/Events';
 
